@@ -14,7 +14,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <a href="#" className="text-2xl font-display font-bold gradient-text">
+            <a href="#" className="text-2xl font-display font-bold gradient-text hover:opacity-80 transition-opacity">
               Portfolio
             </a>
           </motion.div>

@@ -54,39 +54,48 @@ const ContactSection = () => {
               <h3 className="text-2xl font-display font-semibold mb-6">Contact Information</h3>
               
               <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10">
+                <motion.div 
+                  className="flex items-center gap-4 group cursor-pointer"
+                  whileHover={{ x: 4 }}
+                >
+                  <div className="p-3 rounded-xl bg-primary/10 icon-container">
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Email</p>
-                    <a href="mailto:your@email.com" className="hover:text-primary transition-colors">
+                    <a href="mailto:your@email.com" className="hover:text-primary transition-colors link-hover">
                       your@email.com
                     </a>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10">
+                <motion.div 
+                  className="flex items-center gap-4 group cursor-pointer"
+                  whileHover={{ x: 4 }}
+                >
+                  <div className="p-3 rounded-xl bg-primary/10 icon-container">
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Phone</p>
-                    <a href="tel:+1234567890" className="hover:text-primary transition-colors">
+                    <a href="tel:+1234567890" className="hover:text-primary transition-colors link-hover">
                       +1 (234) 567-890
                     </a>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10">
+                <motion.div 
+                  className="flex items-center gap-4 group cursor-pointer"
+                  whileHover={{ x: 4 }}
+                >
+                  <div className="p-3 rounded-xl bg-primary/10 icon-container">
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Location</p>
-                    <p>Your City, Country</p>
+                    <p className="group-hover:text-primary transition-colors">Your City, Country</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-border">

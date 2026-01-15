@@ -58,7 +58,8 @@ const AboutSection = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="px-4 py-2 rounded-full bg-secondary text-sm font-medium text-foreground"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="px-4 py-2 rounded-full bg-secondary text-sm font-medium text-foreground border border-transparent hover:border-primary/30 cursor-default transition-colors skill-tag"
                 >
                   {tech}
                 </motion.span>
@@ -74,19 +75,24 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="flex justify-center lg:justify-end"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-2xl transform rotate-6" />
-              <div className="relative glass-card rounded-2xl p-2 glow-effect">
+            <motion.div 
+              className="relative group cursor-pointer"
+              whileHover={{ rotate: 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-2xl transform rotate-6 group-hover:rotate-12 transition-transform duration-500" />
+              <div className="relative glass-card rounded-2xl p-2 glow-effect overflow-hidden">
                 <img
                   src={profilePhoto}
                   alt="Profile Photo"
-                  className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-xl"
+                  className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/10 rounded-full blur-xl" />
-            </div>
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/10 rounded-full blur-xl group-hover:scale-125 transition-transform duration-500" />
+            </motion.div>
           </motion.div>
         </div>
 
@@ -99,11 +105,13 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="glass-card rounded-xl p-6"
+              whileHover={{ y: -8, rotate: 1 }}
+              className="glass-card rounded-xl p-6 interactive-card group cursor-pointer"
             >
-              <skill.icon className="h-10 w-10 text-primary mb-4" />
-              <h3 className="text-lg font-semibold font-display mb-2">{skill.title}</h3>
+              <div className="p-3 rounded-lg bg-primary/10 w-fit mb-4 icon-container">
+                <skill.icon className="h-7 w-7 text-primary transition-transform duration-300 group-hover:scale-110" />
+              </div>
+              <h3 className="text-lg font-semibold font-display mb-2 group-hover:text-primary transition-colors">{skill.title}</h3>
               <p className="text-muted-foreground text-sm">{skill.description}</p>
             </motion.div>
           ))}
