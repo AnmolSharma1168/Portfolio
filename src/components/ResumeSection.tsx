@@ -62,12 +62,12 @@ const ResumeSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="glass-card rounded-xl p-6 relative"
+                  whileHover={{ x: 4 }}
+                  className="glass-card rounded-xl p-6 pl-8 timeline-accent group cursor-pointer"
                 >
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-xl" />
                   <span className="text-primary text-sm font-medium">{exp.period}</span>
-                  <h4 className="text-lg font-semibold mt-1">{exp.title}</h4>
-                  <p className="text-muted-foreground text-sm">{exp.company}</p>
+                  <h4 className="text-lg font-semibold mt-1 group-hover:text-primary transition-colors">{exp.title}</h4>
+                  <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">{exp.company}</p>
                   <p className="text-muted-foreground mt-2">{exp.description}</p>
                 </motion.div>
               ))}
