@@ -56,7 +56,7 @@ const Navbar = () => {
               </a>
             </Button>
             <Button variant="heroOutline" size="sm" asChild>
-              <a href="#resume">
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 <FileText className="h-4 w-4 mr-1" />
                 Resume
               </a>

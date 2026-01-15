@@ -12,6 +12,9 @@ const techStack = [
   "React", "TypeScript", "Node.js", "Python", "Tailwind CSS", "PostgreSQL", "AWS", "Docker"
 ];
 
+// Replace with your actual photo URL or import from assets
+const profilePhoto = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80";
+
 const AboutSection = () => {
   return (
     <section id="about" className="py-24 relative">
@@ -29,7 +32,8 @@ const AboutSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          {/* Left side - Text content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -62,23 +66,47 @@ const AboutSection = () => {
             </div>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-4">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="glass-card rounded-xl p-6"
-              >
-                <skill.icon className="h-10 w-10 text-primary mb-4" />
-                <h3 className="text-lg font-semibold font-display mb-2">{skill.title}</h3>
-                <p className="text-muted-foreground text-sm">{skill.description}</p>
-              </motion.div>
-            ))}
-          </div>
+          {/* Right side - Profile Photo */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center lg:justify-end"
+          >
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-2xl transform rotate-6" />
+              <div className="relative glass-card rounded-2xl p-2 glow-effect">
+                <img
+                  src={profilePhoto}
+                  alt="Profile Photo"
+                  className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-xl"
+                />
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/10 rounded-full blur-xl" />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Skills Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="glass-card rounded-xl p-6"
+            >
+              <skill.icon className="h-10 w-10 text-primary mb-4" />
+              <h3 className="text-lg font-semibold font-display mb-2">{skill.title}</h3>
+              <p className="text-muted-foreground text-sm">{skill.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
