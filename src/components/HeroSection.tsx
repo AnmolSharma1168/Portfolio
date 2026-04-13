@@ -53,8 +53,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-2xl md:text-3xl text-[#1e293b] font-medium mb-8 max-w-2xl mx-auto"
           >
-            A passionate developer crafting beautiful digital experiences.
-            I build modern web applications with attention to detail.
+            Passionate about Full-Stack Development and Machine Learning, with a strong interest in research.
           </motion.p>
 
           <motion.div
