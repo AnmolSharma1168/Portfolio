@@ -44,7 +44,7 @@ const HeroSection = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-[#0f172a]"
           >
             Hi, I'm{" "}
-            <span className="gradient-text">ANMOL SHARMA</span>
+            <span className="text-[#1e1b4b]">ANMOL SHARMA</span>
           </motion.h1>
 
           <motion.p
