@@ -28,7 +28,7 @@ const AboutSection = () => {
           className="text-center mb-16"
         >
           {/* About Me tag removed */}
-          <h2 className="inline-block px-10 py-5 rounded-full bg-primary/20 text-[#1e1b4b] text-4xl md:text-5xl font-display font-bold mt-2 backdrop-blur-md shadow-sm border border-primary/20">
+          <h2 className="inline-block px-6 py-2.5 rounded-full bg-primary/20 text-[#1e1b4b] text-2xl md:text-3xl font-display font-bold mt-2 backdrop-blur-md shadow-sm border border-primary/20">
             Who I Am
           </h2>
         </motion.div>
@@ -42,19 +42,19 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-8"
           >
-            <p className="text-2xl text-[#0f172a] mb-6 leading-relaxed font-medium">
+            <p className="text-[1.1rem] md:text-lg text-[#0f172a] mb-6 leading-relaxed font-medium">
               I'm a Computer Science undergraduate at SRM Institute of Science and Technology (Batch of 2027), 
               passionate about machine learning, full stack development, and building production-ready systems 
               that solve real problems. I enjoy taking end-to-end ownership — from ideation to deployment.
             </p>
-            <p className="text-2xl text-[#0f172a] mb-6 leading-relaxed font-medium">
+            <p className="text-[1.1rem] md:text-lg text-[#0f172a] mb-6 leading-relaxed font-medium">
               I have interned as a ML Intern at <span className="text-foreground font-semibold">SpazorLabs</span>, 
               developing and integrating ML models into production workflows. I also worked as a 
               Frontend Developer at <span className="text-foreground font-semibold">Runverve</span>, building 
               high-performance React Native mobile screens, and completed a technical traineeship at{" "}
               <span className="text-foreground font-semibold">BSNL</span> working with large-scale telecom infrastructure.
             </p>
-            <p className="text-2xl text-[#0f172a] mb-8 leading-relaxed font-medium">
+            <p className="text-[1.1rem] md:text-lg text-[#0f172a] mb-8 leading-relaxed font-medium">
               Outside of work, I lead sponsorships at the{" "}
               <span className="text-foreground font-semibold">Codenex Club, SRMIST</span> — 
               securing partnerships for hackathons with 3000+ participants.

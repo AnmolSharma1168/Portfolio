@@ -25,7 +25,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <motion.a
             href="#"
-            className="text-3xl font-display font-bold text-[#1e1b4b]"
+            className="text-xl font-display font-bold text-[#1e1b4b]"
             whileHover={{ scale: 1.05 }}
           >
             Portfolio

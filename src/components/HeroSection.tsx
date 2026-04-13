@@ -32,7 +32,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="inline-block px-8 py-4 rounded-full bg-primary/20 text-[#1e1b4b] text-3xl font-bold mb-6 backdrop-blur-md shadow-sm border border-primary/20">
+            <span className="inline-block px-5 py-2 rounded-full bg-primary/20 text-[#1e1b4b] text-base font-bold mb-6 backdrop-blur-md shadow-sm border border-primary/20">
               Welcome to my portfolio
             </span>
           </motion.div>
@@ -41,7 +41,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl md:text-7xl font-display font-bold mb-6 text-[#0f172a]"
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-[#0f172a]"
           >
             Hi, I'm{" "}
             <span className="gradient-text">ANMOL SHARMA</span>
@@ -51,7 +51,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-2xl md:text-3xl text-[#1e293b] font-medium mb-8 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-[#1e293b] font-medium mb-8 max-w-2xl mx-auto"
           >
             Passionate about Full-Stack Development and Machine Learning, with a strong interest in research.
           </motion.p>

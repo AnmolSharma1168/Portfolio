@@ -37,7 +37,7 @@ const ProjectsSection = () => {
             My Work
           </span>
           <br/>
-          <h2 className="inline-block px-10 py-5 rounded-full bg-primary/20 text-[#1e1b4b] text-4xl md:text-5xl font-display font-bold mt-2 backdrop-blur-md shadow-sm border border-primary/20">
+          <h2 className="inline-block px-6 py-2.5 rounded-full bg-primary/20 text-[#1e1b4b] text-2xl md:text-3xl font-display font-bold mt-2 backdrop-blur-md shadow-sm border border-primary/20">
             Featured Projects
           </h2>
         </motion.div>

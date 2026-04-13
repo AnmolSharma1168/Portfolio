@@ -37,7 +37,7 @@ const ResearchAreaSection = () => {
             Exploration
           </span>
           <br/>
-          <h2 className="inline-block px-10 py-5 rounded-full bg-primary/20 text-[#1e1b4b] text-4xl md:text-5xl font-display font-bold mt-2 backdrop-blur-md shadow-sm border border-primary/20">
+          <h2 className="inline-block px-6 py-2.5 rounded-full bg-primary/20 text-[#1e1b4b] text-2xl md:text-3xl font-display font-bold mt-2 backdrop-blur-md shadow-sm border border-primary/20">
             Research Areas
           </h2>
         </motion.div>
@@ -52,7 +52,7 @@ const ResearchAreaSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass-card p-8 rounded-2xl relative overflow-hidden group border border-primary/10 hover:border-primary/30 transition-colors"
             >
-              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300 transform-gpu inline-block">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 transform-gpu inline-block">
                 {area.icon}
               </div>
               <h3 className="text-2xl font-display font-semibold mb-3 group-hover:text-primary transition-colors">
