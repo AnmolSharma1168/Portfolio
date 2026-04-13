@@ -32,7 +32,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+            <span className="inline-block px-8 py-4 rounded-full bg-primary/20 text-[#1e1b4b] text-3xl font-bold mb-6 backdrop-blur-md shadow-sm border border-primary/20">
               Welcome to my portfolio
             </span>
           </motion.div>
@@ -41,17 +41,17 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl md:text-7xl font-display font-bold mb-6"
+            className="text-5xl md:text-7xl font-display font-bold mb-6 text-[#0f172a]"
           >
             Hi, I'm{" "}
-            <span className="gradient-text">Your Name</span>
+            <span className="gradient-text">ANMOL SHARMA</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+            className="text-2xl md:text-3xl text-[#1e293b] font-medium mb-8 max-w-2xl mx-auto"
           >
             A passionate developer crafting beautiful digital experiences.
             I build modern web applications with attention to detail.
@@ -75,20 +75,21 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex items-center justify-center gap-4"
+            className="flex items-center justify-center gap-4 mb-16"
           >
             <Button variant="social" size="iconLg" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/AnmolSharma1168" target="_blank" rel="noopener noreferrer">
                 <Github className="h-6 w-6" />
               </a>
             </Button>
             <Button variant="social" size="iconLg" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/anmol-sharma-a83042290/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-6 w-6" />
               </a>
             </Button>
             <Button variant="social" size="iconLg" asChild>
-              <a href="mailto:your@email.com">
+              <a href="mailto:anmol1168sharma@gmail.com" 
+                aria-label="Send email to Anmol Sharma">
                 <Mail className="h-6 w-6" />
               </a>
             </Button>
@@ -99,16 +100,16 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2"
         >
           <motion.a
             href="#about"
-            className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors"
+            className="flex flex-col items-center text-[#1e1b4b] hover:text-primary font-bold transition-colors"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <span className="text-sm mb-2">Scroll Down</span>
-            <ArrowDown className="h-5 w-5" />
+            <span className="text-2xl mb-2">Scroll Down</span>
+            <ArrowDown className="h-10 w-10 stroke-[3]" />
           </motion.a>
         </motion.div>
       </div>

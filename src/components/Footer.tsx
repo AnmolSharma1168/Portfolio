@@ -14,7 +14,7 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <a href="#" className="text-2xl font-display font-bold gradient-text hover:opacity-80 transition-opacity">
+            <a href="#" className="text-2xl font-display font-bold text-[#1e1b4b] hover:opacity-80 transition-opacity">
               Portfolio
             </a>
           </motion.div>
@@ -26,12 +26,12 @@ const Footer = () => {
             className="flex gap-3"
           >
             <Button variant="social" size="icon" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/AnmolSharma1168" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
               </a>
             </Button>
             <Button variant="social" size="icon" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/anmol-sharma-a83042290/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
               </a>
             </Button>
@@ -41,7 +41,7 @@ const Footer = () => {
               </a>
             </Button>
             <Button variant="social" size="icon" asChild>
-              <a href="mailto:your@email.com">
+              <a href="mailto:anmol1168sharma@gmail.com">
                 <Mail className="h-5 w-5" />
               </a>
             </Button>
@@ -53,7 +53,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-muted-foreground text-sm flex items-center gap-1"
           >
-            © {currentYear} Made with <Heart className="h-4 w-4 text-primary" /> by Your Name
+            © {currentYear}  by Anmol Sharma
           </motion.p>
         </div>
       </div>

@@ -6,6 +6,8 @@ import { useState } from "react";
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "Other Works", href: "#other-projects" },
+  { name: "Research", href: "#research" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -17,13 +19,13 @@ const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 glass-card"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/20 backdrop-blur-lg border-b border-[#1e1b4b]/10 shadow-sm"
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <motion.a
             href="#"
-            className="text-2xl font-display font-bold gradient-text"
+            className="text-3xl font-display font-bold text-[#1e1b4b]"
             whileHover={{ scale: 1.05 }}
           >
             Portfolio
@@ -35,7 +37,7 @@ const Navbar = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                className="text-2xl font-bold text-[#1e1b4b] hover:text-primary transition-colors duration-300"
                 whileHover={{ y: -2 }}
               >
                 {link.name}
@@ -44,20 +46,20 @@ const Navbar = () => {
           </div>
 
           {/* Social Links */}
-          <div className="hidden md:flex items-center gap-3">
-            <Button variant="social" size="icon" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github className="h-5 w-5" />
+          <div className="hidden md:flex items-center gap-4">
+            <Button variant="social" size="iconXl" asChild>
+              <a href="https://github.com/AnmolSharma1168" target="_blank" rel="noopener noreferrer">
+                <Github className="h-8 w-8" />
               </a>
             </Button>
-            <Button variant="social" size="icon" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="h-5 w-5" />
+            <Button variant="social" size="iconXl" asChild>
+              <a href="https://www.linkedin.com/in/anmol-sharma-a83042290/" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="h-8 w-8" />
               </a>
             </Button>
-            <Button variant="heroOutline" size="sm" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                <FileText className="h-4 w-4 mr-1" />
+            <Button variant="heroOutline" size="lg" asChild>
+              <a href="https://drive.google.com/file/d/183y7Y6HxQHiozFamH2cD46wV-85snFdF/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                <FileText className="h-6 w-6 mr-2" />
                 Resume
               </a>
             </Button>
@@ -87,7 +89,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-[#1e1b4b] font-bold text-xl hover:text-primary transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
@@ -113,4 +115,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar; 
