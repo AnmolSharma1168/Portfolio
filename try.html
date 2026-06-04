@@ -1,0 +1,548 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECLIPSE | Creative Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@700,600&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <meta name="view-transition" content="same-origin">
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --taupe: #b7ab98;
+            --coral: #eb5939;
+            --border: rgba(118, 118, 118, 0.12);
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @view-transition {
+            navigation: auto;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            cursor: none;
+        }
+
+        .font-clash {
+            font-family: 'Clash Grotesk', sans-serif;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.03;
+            mix-blend-mode: overlay;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.1s linear;
+        }
+
+        .cursor-ring {
+            position: fixed;
+            top: -16px;
+            left: -16px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s var(--ease), border-color 0.3s var(--ease), scale 0.3s var(--ease);
+        }
+
+        .cursor-active .cursor-ring {
+            scale: 1.5;
+            border-color: var(--coral);
+            background-color: rgba(235, 89, 57, 0.05);
+        }
+
+        .line-mask-container {
+            overflow: hidden;
+        }
+
+        .line-mask-content {
+            display: block;
+            transform: translateY(115%);
+            transition: transform 1.2s var(--ease);
+        }
+
+        .reveal-visible .line-mask-content {
+            transform: translateY(0);
+        }
+
+        .magnetic-link {
+            position: relative;
+            display: inline-block;
+        }
+
+        .magnetic-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background-color: currentColor;
+            transition: width 0.6s var(--ease);
+        }
+
+        .magnetic-link:hover::after {
+            width: 100%;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-spin-slow {
+            animation: spin 22s linear infinite;
+        }
+
+        .service-row:hover .service-arrow {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .service-row:hover {
+            transform: translateX(16px);
+        }
+
+        .work-card img {
+            filter: grayscale(100%);
+            transition: transform 0.8s var(--ease), filter 0.8s var(--ease);
+        }
+
+        .work-card:hover img {
+            transform: scale(1.06);
+            filter: grayscale(0%);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s var(--ease), transform 1s var(--ease);
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        header.scrolled {
+            background-color: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen relative selection:bg-[#eb5939] selection:text-white">
+        <div class="noise-overlay"></div>
+        <div class="custom-cursor" id="cursor-dot"></div>
+        <div class="cursor-ring" id="cursor-ring"></div>
+
+        <!-- Navigation -->
+        <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 md:py-8">
+            <div class="max-w-[1400px] mx-auto px-6 flex justify-between items-center">
+                <a href="#" id="nav-logo" class="text-2xl font-clash font-bold tracking-tight hover-trigger">
+                    ECLIPSE<span class="text-[#eb5939]">.</span>
+                </a>
+                
+                <nav class="hidden md:flex items-center gap-12">
+                    <a href="#work" id="nav-work" class="text-[11px] uppercase tracking-[0.14em] font-medium magnetic-link hover-trigger">Selected Work</a>
+                    <a href="#services" id="nav-services" class="text-[11px] uppercase tracking-[0.14em] font-medium magnetic-link hover-trigger">Services</a>
+                    <a href="#about" id="nav-about" class="text-[11px] uppercase tracking-[0.14em] font-medium magnetic-link hover-trigger">Process</a>
+                    <a href="#contact" id="nav-contact" class="px-6 py-2 border border-white/20 rounded-full text-[11px] uppercase tracking-[0.14em] hover:bg-white hover:text-black transition-all duration-300 hover-trigger">Let's Talk</a>
+                </nav>
+
+                <button class="md:hidden flex flex-col gap-1.5 hover-trigger">
+                    <span class="w-6 h-[1px] bg-white"></span>
+                    <span class="w-4 h-[1px] bg-white self-end"></span>
+                </button>
+            </div>
+        </header>
+
+        <main style="view-transition-name: main-content">
+            
+            <!-- Hero Section -->
+            <section class="pt-48 pb-32 md:pt-64 md:pb-48">
+                <div class="max-w-[1400px] mx-auto px-6 grid md:grid-cols-12 gap-12">
+                    <!-- Hero Text -->
+                    <div class="md:col-span-8 flex flex-col items-start">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span class="text-[11px] uppercase tracking-[0.2em] font-medium text-white/50">Multidisciplinary Agency</span>
+                            <div class="w-16 h-[1px] bg-white/20"></div>
+                        </div>
+                        
+                        <div class="hero-heading-reveal reveal-visible">
+                            <h1 class="text-[72px] md:text-[130px] font-clash font-bold leading-[0.9] tracking-tight mb-4">
+                                <span class="line-mask-container block">
+                                    <span class="line-mask-content">DESIGNING</span>
+                                </span>
+                                <span class="line-mask-container block">
+                                    <span class="line-mask-content">BEYOND</span>
+                                </span>
+                                <span class="line-mask-container block">
+                                    <span class="line-mask-content text-[#b7ab98]">LIMITS<span class="text-[#eb5939]">.</span></span>
+                                </span>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <!-- Hero Badge -->
+                    <div class="md:col-span-4 flex justify-center md:justify-end items-center">
+                        <div class="relative w-64 h-64 flex items-center justify-center hover-trigger">
+                            <svg class="absolute inset-0 w-full h-full animate-spin-slow" viewBox="0 0 100 100">
+                                <defs>
+                                    <path id="textCircle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+                                </defs>
+                                <text font-size="8" font-family="Satoshi" font-weight="500" letter-spacing="4" fill="white" opacity="0.6">
+                                    <textPath xlink:href="#textCircle">
+                                        OPEN TO WORK • FREELANCE AVAILABLE •
+                                    </textPath>
+                                </text>
+                            </svg>
+                            <div class="w-24 h-24 bg-[#b7ab98] hover:bg-[#eb5939] rounded-full flex items-center justify-center transition-colors duration-500 magnetic-btn">
+                                <iconify-icon icon="lucide:arrow-down-right" class="text-4xl text-black"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Marquee -->
+            <section class="border-y border-white/10 py-12 md:py-20 overflow-hidden bg-black/20">
+                <div class="flex whitespace-nowrap animate-marquee">
+                    <div class="flex items-center gap-12 px-6">
+                        <span class="text-5xl md:text-8xl font-clash font-bold opacity-10 uppercase">Brand Identity</span>
+                        <iconify-icon icon="lucide:star" class="text-4xl text-[#eb5939]"></iconify-icon>
+                        <span class="text-5xl md:text-8xl font-clash font-bold opacity-10 uppercase">User Experience</span>
+                        <iconify-icon icon="lucide:star" class="text-4xl text-[#eb5939]"></iconify-icon>
+                        <span class="text-5xl md:text-8xl font-clash font-bold opacity-10 uppercase">Creative Tech</span>
+                        <iconify-icon icon="lucide:star" class="text-4xl text-[#eb5939]"></iconify-icon>
+                        <span class="text-5xl md:text-8xl font-clash font-bold opacity-10 uppercase">Motion Design</span>
+                        <iconify-icon icon="lucide:star" class="text-4xl text-[#eb5939]"></iconify-icon>
+                    </div>
+                    <div class="flex items-center gap-12 px-6">
+                        <span class="text-5xl md:text-8xl font-clash font-bold opacity-10 uppercase">Brand Identity</span>
+                        <iconify-icon icon="lucide:star" class="text-4xl text-[#eb5939]"></iconify-icon>
+                        <span class="text-5xl md:text-8xl font-clash font-bold opacity-10 uppercase">User Experience</span>
+                        <iconify-icon icon="lucide:star" class="text-4xl text-[#eb5939]"></iconify-icon>
+                        <span class="text-5xl md:text-8xl font-clash font-bold opacity-10 uppercase">Creative Tech</span>
+                        <iconify-icon icon="lucide:star" class="text-4xl text-[#eb5939]"></iconify-icon>
+                        <span class="text-5xl md:text-8xl font-clash font-bold opacity-10 uppercase">Motion Design</span>
+                        <iconify-icon icon="lucide:star" class="text-4xl text-[#eb5939]"></iconify-icon>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Selected Work Grid -->
+            <section id="work" class="py-32">
+                <div class="max-w-[1400px] mx-auto px-6">
+                    <div class="flex justify-between items-end mb-20">
+                        <h2 class="text-5xl font-clash font-bold">Selected Projects</h2>
+                        <span class="text-[11px] uppercase tracking-widest text-white/40">Explore All (12)</span>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-x-12 gap-y-24">
+                        <!-- Project 01 -->
+                        <a href="#" id="project-1-link" class="group work-card relative fade-in-section hover-trigger">
+                            <div class="aspect-[4/3] overflow-hidden bg-[#1a1a1a] relative">
+                                <span class="absolute top-6 right-8 text-[72px] font-clash font-bold opacity-10 z-10">01</span>
+                                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1400" alt="Abstract Design" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                                    <span class="px-8 py-3 bg-white text-black font-medium rounded-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">View Project</span>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-2xl font-clash font-bold group-hover:text-[#eb5939] transition-colors duration-300">Aura Luxury Wellness</h3>
+                                    <p class="text-white/40 mt-2">Creative Direction, Branding</p>
+                                </div>
+                                <div class="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-[#eb5939] group-hover:border-[#eb5939] transition-all">
+                                    <iconify-icon icon="lucide:arrow-right" class="group-hover:text-white"></iconify-icon>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Project 02 -->
+                        <a href="#" id="project-2-link" class="group work-card relative translate-y-20 fade-in-section hover-trigger">
+                            <div class="aspect-[4/3] overflow-hidden bg-[#1a1a1a] relative">
+                                <span class="absolute top-6 right-8 text-[72px] font-clash font-bold opacity-10 z-10">02</span>
+                                <img src="https://images.unsplash.com/photo-1635332219760-49651ba5257e?auto=format&fit=crop&q=80&w=1400" alt="Studio Concept" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                                    <span class="px-8 py-3 bg-white text-black font-medium rounded-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">View Project</span>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-2xl font-clash font-bold group-hover:text-[#eb5939] transition-colors duration-300">Nova Creative Studio</h3>
+                                    <p class="text-white/40 mt-2">UI/UX Design, Development</p>
+                                </div>
+                                <div class="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-[#eb5939] group-hover:border-[#eb5939] transition-all">
+                                    <iconify-icon icon="lucide:arrow-right" class="group-hover:text-white"></iconify-icon>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services -->
+            <section id="services" class="py-32">
+                <div class="max-w-[1400px] mx-auto">
+                    <div class="px-6 mb-20">
+                        <h2 class="text-5xl font-clash font-bold">Our Expertise</h2>
+                    </div>
+
+                    <div class="flex flex-col border-t border-white/10">
+                        <!-- Row 01 -->
+                        <div class="service-row group border-b border-white/10 py-12 px-6 flex items-center gap-12 transition-transform duration-700 hover-trigger">
+                            <iconify-icon icon="lucide:arrow-right" class="service-arrow text-3xl text-[#eb5939] -ml-8 opacity-0 transition-all duration-700 pointer-events-none"></iconify-icon>
+                            <span class="text-lg font-clash opacity-20">01</span>
+                            <h3 class="text-3xl md:text-5xl font-clash font-bold flex-1">Strategic Branding</h3>
+                            <div class="hidden md:block max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                                <p class="text-white/50">We build lasting relationships between brands and people through emotional connection and strategic clarity.</p>
+                            </div>
+                        </div>
+                        <!-- Row 02 -->
+                        <div class="service-row group border-b border-white/10 py-12 px-6 flex items-center gap-12 transition-transform duration-700 hover-trigger">
+                            <iconify-icon icon="lucide:arrow-right" class="service-arrow text-3xl text-[#eb5939] -ml-8 opacity-0 transition-all duration-700 pointer-events-none"></iconify-icon>
+                            <span class="text-lg font-clash opacity-20">02</span>
+                            <h3 class="text-3xl md:text-5xl font-clash font-bold flex-1">Digital Experience</h3>
+                            <div class="hidden md:block max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                                <p class="text-white/50">Creating intuitive digital interfaces that deliver exceptional performance and delightful user journeys.</p>
+                            </div>
+                        </div>
+                        <!-- Row 03 -->
+                        <div class="service-row group border-b border-white/10 py-12 px-6 flex items-center gap-12 transition-transform duration-700 hover-trigger">
+                            <iconify-icon icon="lucide:arrow-right" class="service-arrow text-3xl text-[#eb5939] -ml-8 opacity-0 transition-all duration-700 pointer-events-none"></iconify-icon>
+                            <span class="text-lg font-clash opacity-20">03</span>
+                            <h3 class="text-3xl md:text-5xl font-clash font-bold flex-1">Visual Identity</h3>
+                            <div class="hidden md:block max-w-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                                <p class="text-white/50">Distinctive visual languages crafted with precision to communicate your brand's unique essence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Process Section -->
+            <section id="about" class="py-32 bg-[#111111]">
+                <div class="max-w-[1400px] mx-auto px-6">
+                    <div class="mb-24">
+                        <span class="text-[11px] uppercase tracking-[0.3em] text-[#eb5939] font-bold mb-4 block">Workflow</span>
+                        <h2 class="text-5xl font-clash font-bold">The Process Behind Perfection</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-12">
+                        <!-- Step 01 -->
+                        <div class="relative flex flex-col items-start fade-in-section">
+                            <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center mb-8">
+                                <span class="font-clash font-bold">01</span>
+                            </div>
+                            <div class="h-[1px] w-full bg-gradient-to-r from-white/20 to-transparent absolute top-8 left-16 hidden md:block"></div>
+                            <h4 class="text-xl font-clash font-bold mb-4">Discovery & Research</h4>
+                            <p class="text-white/40 text-sm leading-relaxed">Diving deep into your brand, market, and audience to uncover core opportunities.</p>
+                        </div>
+                        <!-- Step 02 -->
+                        <div class="relative flex flex-col items-start fade-in-section" style="transition-delay: 0.2s;">
+                            <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center mb-8">
+                                <span class="font-clash font-bold">02</span>
+                            </div>
+                            <div class="h-[1px] w-full bg-gradient-to-r from-white/20 to-transparent absolute top-8 left-16 hidden md:block"></div>
+                            <h4 class="text-xl font-clash font-bold mb-4">Concept & Design</h4>
+                            <p class="text-white/40 text-sm leading-relaxed">Transforming strategy into visual concepts that challenge conventions.</p>
+                        </div>
+                        <!-- Step 03 -->
+                        <div class="relative flex flex-col items-start fade-in-section" style="transition-delay: 0.4s;">
+                            <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center mb-8">
+                                <span class="font-clash font-bold">03</span>
+                            </div>
+                            <div class="h-[1px] w-full bg-gradient-to-r from-white/20 to-transparent absolute top-8 left-16 hidden md:block"></div>
+                            <h4 class="text-xl font-clash font-bold mb-4">Refinement</h4>
+                            <p class="text-white/40 text-sm leading-relaxed">Polishing every pixel and interaction to ensure a seamless final result.</p>
+                        </div>
+                        <!-- Step 04 -->
+                        <div class="relative flex flex-col items-start fade-in-section" style="transition-delay: 0.6s;">
+                            <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center mb-8">
+                                <span class="font-clash font-bold text-[#eb5939]">04</span>
+                            </div>
+                            <h4 class="text-xl font-clash font-bold mb-4">Launch & Evolution</h4>
+                            <p class="text-white/40 text-sm leading-relaxed">Deploying with precision and monitoring growth for long-term success.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer id="contact" class="pt-32 pb-12 bg-black">
+                <div class="max-w-[1400px] mx-auto px-6">
+                    <div class="grid md:grid-cols-12 gap-12 mb-24">
+                        <div class="md:col-span-5">
+                            <a href="#" class="text-4xl font-clash font-bold tracking-tight mb-8 block hover-trigger">ECLIPSE.</a>
+                            <p class="text-lg text-white/50 max-w-xs mb-12">Elevating digital landscapes through strategic design and innovative creative thinking.</p>
+                            <div class="flex gap-6">
+                                <a href="#" id="footer-social-ig" class="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-[#eb5939] hover:border-[#eb5939] transition-all magnetic-btn hover-trigger">
+                                    <iconify-icon icon="lucide:instagram"></iconify-icon>
+                                </a>
+                                <a href="#" id="footer-social-tw" class="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-[#eb5939] hover:border-[#eb5939] transition-all magnetic-btn hover-trigger">
+                                    <iconify-icon icon="lucide:twitter"></iconify-icon>
+                                </a>
+                                <a href="#" id="footer-social-dr" class="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-[#eb5939] hover:border-[#eb5939] transition-all magnetic-btn hover-trigger">
+                                    <iconify-icon icon="lucide:dribbble"></iconify-icon>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <h5 class="text-[11px] uppercase tracking-widest text-white/30 mb-8">Navigate</h5>
+                            <ul class="flex flex-col gap-4">
+                                <li><a href="#" id="foot-nav-work" class="text-lg magnetic-link hover-trigger">Work</a></li>
+                                <li><a href="#" id="foot-nav-studio" class="text-lg magnetic-link hover-trigger">Studio</a></li>
+                                <li><a href="#" id="foot-nav-news" class="text-lg magnetic-link hover-trigger">News</a></li>
+                                <li><a href="#" id="foot-nav-contact" class="text-lg magnetic-link hover-trigger">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <h5 class="text-[11px] uppercase tracking-widest text-white/30 mb-8">Contact</h5>
+                            <ul class="flex flex-col gap-4">
+                                <li><a href="mailto:hello@eclipse.studio" class="text-lg magnetic-link hover-trigger">hello@eclipse.studio</a></li>
+                                <li class="text-white/50 text-lg">+1 (555) 0123 4567</li>
+                                <li class="text-white/50 text-lg">Los Angeles, CA</li>
+                            </ul>
+                        </div>
+
+                        <div class="md:col-span-3 flex md:justify-end">
+                            <div class="text-right">
+                                <h5 class="text-[11px] uppercase tracking-widest text-white/30 mb-8">Newsletter</h5>
+                                <div class="relative flex items-center border-b border-white/20 pb-4">
+                                    <input type="email" placeholder="Your Email" class="bg-transparent border-none outline-none text-lg w-full placeholder:text-white/10">
+                                    <button class="hover-trigger">
+                                        <iconify-icon icon="lucide:arrow-right" class="text-2xl text-[#eb5939]"></iconify-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+                        <span class="text-[11px] uppercase tracking-widest text-white/20">© 2024 ECLIPSE CREATIVE STUDIO. ALL RIGHTS RESERVED.</span>
+                        <a href="#" id="back-to-top" class="group flex items-center gap-4 hover-trigger">
+                            <span class="text-[11px] uppercase tracking-widest text-white/50 group-hover:text-white transition-colors">Back to top</span>
+                            <div class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                                <iconify-icon icon="lucide:arrow-up"></iconify-icon>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Custom Cursor Implementation
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+        });
+
+        const animateRing = () => {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            ring.style.transform = `translate(${ringX - 20}px, ${ringY - 20}px)`;
+            requestAnimationFrame(animateRing);
+        };
+        animateRing();
+
+        // Hover states for cursor
+        const hoverables = document.querySelectorAll('.hover-trigger');
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation using Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.add('reveal-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section, .hero-heading-reveal').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Magnetic Button implementation (Simple version)
+        const magneticButtons = document.querySelectorAll('.magnetic-btn');
+        magneticButtons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0px, 0px)`;
+            });
+        });
+    </script>
+</body>
+</html>

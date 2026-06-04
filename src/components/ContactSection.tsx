@@ -1,13 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-  Github,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+import { Mail, MapPin, Phone, Send, Github, Linkedin, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -64,180 +56,132 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-6 py-2.5 rounded-full bg-primary/20 text-[#1e1b4b] text-xl font-bold mb-4 backdrop-blur-md border border-primary/20 tracking-wider uppercase">
-            Get In Touch
-          </span>
-          <br/>
-          <h2 className="inline-block px-6 py-2.5 rounded-full bg-primary/20 text-[#1e1b4b] text-2xl md:text-3xl font-display font-bold mt-2 backdrop-blur-md shadow-sm border border-primary/20">
-            Let's Work Together
-          </h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* LEFT */}
+    <section id="contact" className="pt-32 pb-12 bg-black">
+      <div className="max-w-[1400px] mx-auto px-6">
+        <div className="grid md:grid-cols-12 gap-12 mb-24">
+          {/* Left Column - Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="md:col-span-5"
           >
-            <div className="glass-card rounded-2xl p-10">
-              <h3 className="text-2xl font-display font-bold mb-6">
-                Contact Information
-              </h3>
+            <a href="#" className="text-4xl font-clash font-bold tracking-tight mb-8 block hover-trigger">
+              ANMOL<span className="text-[#d4af37]">.</span>
+            </a>
+            <p className="text-xl text-white/50 max-w-xs mb-12">
+              Let's collaborate on something extraordinary. Reach out and let's create together.
+            </p>
 
-              <div className="space-y-6">
-                <div className="flex items-center gap-5">
-                  <div className="p-4 rounded-xl bg-primary/10">
-                    <Mail className="h-8 w-8 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-base text-muted-foreground font-medium">Email</p>
-                    <a
-                      href="mailto:anmol1168sharma@gmail.com"
-                      className="text-lg hover:text-primary transition-colors"
-                    >
-                      anmol1168sharma@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-5">
-                  <div className="p-4 rounded-xl bg-primary/10">
-                    <Phone className="h-8 w-8 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-base text-muted-foreground font-medium">Phone</p>
-                    <a
-                      href="tel:+919410601666"
-                      className="text-lg hover:text-primary transition-colors"
-                    >
-                      +91 9410601666
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-5">
-                  <div className="p-4 rounded-xl bg-primary/10">
-                    <MapPin className="h-8 w-8 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-base text-muted-foreground font-medium">Location</p>
-                    <p className="text-lg">Chennai, INDIA</p>
-                  </div>
-                </div>
+            <div className="space-y-8">
+              <div>
+                <p className="text-[12px] uppercase tracking-widest text-white/30 mb-3">Email</p>
+                <a href="mailto:anmol1168sharma@gmail.com" className="text-lg magnetic-link hover-trigger">
+                  anmol1168sharma@gmail.com
+                </a>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-border">
-                <p className="text-base text-muted-foreground mb-5 font-medium">
-                  Follow me on social media
-                </p>
-                <div className="flex gap-4">
-                  <Button variant="social" size="iconLg" asChild>
-                    <a
-                      href="https://github.com/AnmolSharma1168"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Github className="h-7 w-7" />
-                    </a>
-                  </Button>
-                  <Button variant="social" size="iconLg" asChild>
-                    <a
-                      href="https://www.linkedin.com/in/anmol-sharma-a83042290/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Linkedin className="h-7 w-7" />
-                    </a>
-                  </Button>
-                  <Button variant="social" size="iconLg" asChild>
-                    <a
-                      href="https://x.com/AnmolShar1168"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Twitter className="h-7 w-7" />
-                    </a>
-                  </Button>
-                </div>
+              <div>
+                <p className="text-[12px] uppercase tracking-widest text-white/30 mb-3">Phone</p>
+                <a href="tel:+919410601666" className="text-lg magnetic-link hover-trigger">
+                  +91 9410601666
+                </a>
+              </div>
+
+              <div>
+                <p className="text-[12px] uppercase tracking-widest text-white/30 mb-3">Location</p>
+                <p className="text-lg text-white/70">Chennai, India</p>
+              </div>
+            </div>
+
+            <div className="mt-12 pt-12 border-t border-white/10">
+              <p className="text-[12px] uppercase tracking-widest text-white/30 mb-6">Social</p>
+              <div className="flex gap-4">
+                <a href="https://github.com/AnmolSharma1168" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-[#d4af37] hover:border-[#d4af37] hover:text-black transition-all magnetic-btn hover-trigger">
+                  <Github className="w-5 h-5" />
+                </a>
+                <a href="https://www.linkedin.com/in/anmol-sharma-a83042290/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-[#d4af37] hover:border-[#d4af37] hover:text-black transition-all magnetic-btn hover-trigger">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-[#d4af37] hover:border-[#d4af37] hover:text-black transition-all magnetic-btn hover-trigger">
+                  <Instagram className="w-5 h-5" />
+                </a>
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT */}
+          {/* Right Column - Newsletter */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="md:col-span-7 flex items-end"
           >
-            <form
-              onSubmit={handleSubmit}
-              className="glass-card rounded-2xl p-10"
-            >
-              <h3 className="text-2xl font-display font-bold mb-6">
-                Send a Message
-              </h3>
+            <div className="w-full">
+              <h5 className="text-[12px] uppercase tracking-widest text-white/30 mb-8 font-semibold">Quick Message</h5>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                  />
+                </div>
 
-              <div className="space-y-6">
-                <Input
-                  id="name"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  required
-                />
+                <div>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                    className="bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                  />
+                </div>
 
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  required
-                />
-
-                <Textarea
-                  id="message"
-                  name="message"
-                  placeholder="Tell me about your project..."
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  required
-                />
+                <div>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell me about your project..."
+                    rows={4}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                    className="bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                  />
+                </div>
 
                 <Button
                   type="submit"
-                  variant="hero"
-                  size="xl"
-                  className="w-full text-lg"
                   disabled={isSubmitting}
+                  className="w-full px-8 py-3 bg-[#d4af37] hover:bg-[#c49928] text-black font-medium rounded-full hover-trigger"
                 >
-                  <Send className="h-6 w-6 mr-2" />
+                  <Send className="h-5 w-5 mr-2" />
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
-              </div>
-            </form>
+              </form>
+            </div>
           </motion.div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+          <span className="text-[12px] uppercase tracking-widest text-white/20">© 2024 ANMOL SHARMA. ALL RIGHTS RESERVED.</span>
+          <a href="#" className="group flex items-center gap-4 hover-trigger">
+            <span className="text-[12px] uppercase tracking-widest text-white/50 group-hover:text-white transition-colors">Back to top</span>
+            <div className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+              ↑
+            </div>
+          </a>
         </div>
       </div>
     </section>

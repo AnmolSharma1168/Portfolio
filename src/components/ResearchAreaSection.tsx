@@ -24,25 +24,14 @@ const areas = [
 
 const ResearchAreaSection = () => {
   return (
-    <section id="research" className="py-24 relative">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-6 py-2.5 rounded-full bg-primary/20 text-[#1e1b4b] text-xl font-bold mb-4 backdrop-blur-md border border-primary/20 tracking-wider uppercase">
-            Exploration
-          </span>
-          <br/>
-          <h2 className="inline-block px-6 py-2.5 rounded-full bg-primary/20 text-[#1e1b4b] text-2xl md:text-3xl font-display font-bold mt-2 backdrop-blur-md shadow-sm border border-primary/20">
-            Research Areas
-          </h2>
-        </motion.div>
+    <section id="research" className="py-32 bg-[#111111]">
+      <div className="max-w-[1400px] mx-auto px-6">
+        <div className="mb-24">
+          <span className="text-[12px] uppercase tracking-[0.3em] text-[#d4af37] font-bold mb-4 block">Research</span>
+          <h2 className="text-6xl font-clash font-bold">Areas of Expertise</h2>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-12">
           {areas.map((area, index) => (
             <motion.div
               key={index}
@@ -50,28 +39,26 @@ const ResearchAreaSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-card p-8 rounded-2xl relative overflow-hidden group border border-primary/10 hover:border-primary/30 transition-colors"
+              className="relative flex flex-col fade-in-section hover-trigger group"
             >
-              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 transform-gpu inline-block">
+              <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300 inline-block">
                 {area.icon}
               </div>
-              <h3 className="text-2xl font-display font-semibold mb-3 group-hover:text-primary transition-colors">
+              <h3 className="text-2xl font-clash font-bold mb-4 group-hover:text-[#d4af37] transition-colors">
                 {area.title}
               </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-white/40 text-base leading-relaxed mb-6">
                 {area.description}
               </p>
               
               {area.link && (
-                <Button variant="outline" size="lg" asChild className="relative z-10 group/btn hover:border-primary/50 transition-colors">
-                  <a href={area.link} target="_blank" rel="noopener noreferrer">
-                    <FileText className="h-5 w-5 mr-2 text-muted-foreground group-hover/btn:text-primary transition-colors" />
+                <Button asChild className="w-fit px-0 text-white/60 hover:text-[#d4af37] bg-transparent border-none hover:bg-transparent transition-colors">
+                  <a href={area.link} target="_blank" rel="noopener noreferrer" className="magnetic-link">
                     {area.linkText}
+                    <FileText className="h-4 w-4 ml-2 inline" />
                   </a>
                 </Button>
               )}
-              
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors" />
             </motion.div>
           ))}
         </div>

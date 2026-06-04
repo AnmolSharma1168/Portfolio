@@ -25,25 +25,15 @@ const experiences = [
 
 const ResumeSection = () => {
   return (
-    <section id="resume" className="py-24 relative bg-secondary/20">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-6 py-2.5 rounded-full bg-primary/20 text-[#1e1b4b] text-xl font-bold mb-4 backdrop-blur-md border border-primary/20 tracking-wider uppercase">
-            Resume
-          </span>
-          <br/>
-          <h2 className="inline-block px-6 py-2.5 rounded-full bg-primary/20 text-[#1e1b4b] text-2xl md:text-3xl font-display font-bold mt-2 backdrop-blur-md shadow-sm border border-primary/20">
-            My Experience
-          </h2>
-        </motion.div>
+    <section id="resume" className="py-32 bg-[#111111]">
+      <div className="max-w-[1400px] mx-auto px-6">
+        <div className="mb-24">
+          <span className="text-[12px] uppercase tracking-[0.3em] text-[#d4af37] font-bold mb-4 block">Resume</span>
+          <h2 className="text-6xl font-clash font-bold">My Experience & Education</h2>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-20">
+          {/* Work Experience */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -51,13 +41,13 @@ const ResumeSection = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <Briefcase className="h-6 w-6 text-primary" />
+              <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center">
+                <Briefcase className="h-6 w-6 text-white/60" />
               </div>
-              <h3 className="text-2xl font-display font-semibold text-[#1e293b]">Work Experience</h3>
+              <h3 className="text-2xl font-clash font-bold text-white">Work Experience</h3>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {experiences.map((exp, index) => (
                 <motion.div
                   key={exp.title}
@@ -65,18 +55,23 @@ const ResumeSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ x: 4 }}
-                  className="glass-card rounded-xl p-6 pl-8 timeline-accent group cursor-pointer"
+                  className="relative pl-8 fade-in-section hover-trigger group"
                 >
-                  <span className="text-primary text-sm font-medium">{exp.period}</span>
-                  <h4 className="text-lg font-semibold mt-1 group-hover:text-primary transition-colors">{exp.title}</h4>
-                  <p className="text-muted-foreground text-sm group-hover:text-foreground/70 transition-colors">{exp.company}</p>
-                  <p className="text-muted-foreground mt-2">{exp.description}</p>
+                  <div className="absolute left-0 top-2 w-4 h-4 rounded-full border-2 border-[#d4af37] bg-[#0d0d0d]"></div>
+                  {index < experiences.length - 1 && (
+                    <div className="absolute left-[7px] top-8 w-[2px] h-[calc(100%+2rem)] bg-white/10"></div>
+                  )}
+                  
+                  <span className="text-[#d4af37] text-sm font-medium">{exp.period}</span>
+                  <h4 className="text-lg font-clash font-bold mt-2 group-hover:text-[#d4af37] transition-colors">{exp.title}</h4>
+                  <p className="text-white/50 text-sm mt-1">{exp.company}</p>
+                  <p className="text-white/60 text-sm mt-3 leading-relaxed">{exp.description}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
+          {/* Education & Resume */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -85,48 +80,85 @@ const ResumeSection = () => {
             className="flex flex-col"
           >
             <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <GraduationCap className="h-6 w-6 text-primary" />
+              <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center">
+                <GraduationCap className="h-6 w-6 text-white/60" />
               </div>
-              <h3 className="text-2xl font-display font-semibold text-[#1e293b]">Education</h3>
+              <h3 className="text-2xl font-clash font-bold text-white">Education</h3>
             </div>
 
-            <div className="space-y-6 mb-8">
-              <div className="glass-card rounded-xl p-6">
-                <span className="text-primary text-sm font-medium">Aug 2023 - May 2027</span>
-                <h4 className="text-lg font-semibold mt-1">B.Tech — Computer Science and Engineering</h4>
-                <p className="text-muted-foreground text-sm">SRM Institute of Science and Technology, Chennai</p>
-                <p className="text-muted-foreground mt-2">CGPA: 8.92/10 · Sponsorship Associate Head, Codenex Club</p>
-              </div>
+            <div className="space-y-6 mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0 }}
+                className="relative pl-8 fade-in-section"
+              >
+                <div className="absolute left-0 top-2 w-4 h-4 rounded-full border-2 border-[#d4af37] bg-[#0d0d0d]"></div>
+                <div className="absolute left-[7px] top-8 w-[2px] h-[calc(100%+2rem)] bg-white/10"></div>
+                
+                <span className="text-[#d4af37] text-sm font-medium">Aug 2023 - May 2027</span>
+                <h4 className="text-lg font-clash font-bold mt-2">B.Tech — Computer Science & Engineering</h4>
+                <p className="text-white/50 text-sm mt-1">SRM Institute of Science and Technology, Chennai</p>
+                <p className="text-white/60 text-sm mt-2">CGPA: 8.92/10 · Sponsorship Associate Head, Codenex Club</p>
+              </motion.div>
 
-              <div className="glass-card rounded-xl p-6">
-                <span className="text-primary text-sm font-medium">2023</span>
-                <h4 className="text-lg font-semibold mt-1">Class XII — C.B.S.E. (PCM + IP)</h4>
-                <p className="text-muted-foreground text-sm">R.R. Morarka Public School, Nagina, U.P.</p>
-                <p className="text-muted-foreground mt-2">Percentage: 87.8%</p>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="relative pl-8 fade-in-section"
+              >
+                <div className="absolute left-0 top-2 w-4 h-4 rounded-full border-2 border-[#d4af37] bg-[#0d0d0d]"></div>
+                <div className="absolute left-[7px] top-8 w-[2px] h-[calc(100%+2rem)] bg-white/10"></div>
+                
+                <span className="text-[#d4af37] text-sm font-medium">2023</span>
+                <h4 className="text-lg font-clash font-bold mt-2">Class XII — C.B.S.E. (PCM + IP)</h4>
+                <p className="text-white/50 text-sm mt-1">R.R. Morarka Public School, Nagina, U.P.</p>
+                <p className="text-white/60 text-sm mt-2">Percentage: 87.8%</p>
+              </motion.div>
 
-              <div className="glass-card rounded-xl p-6">
-                <span className="text-primary text-sm font-medium">2021</span>
-                <h4 className="text-lg font-semibold mt-1">Class X — C.B.S.E.</h4>
-                <p className="text-muted-foreground text-sm">R.R. Morarka Public School, Nagina, U.P.</p>
-                <p className="text-muted-foreground mt-2">Percentage: 92.8%</p>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="relative pl-8 fade-in-section"
+              >
+                <div className="absolute left-0 top-2 w-4 h-4 rounded-full border-2 border-[#d4af37] bg-[#0d0d0d]"></div>
+                
+                <span className="text-[#d4af37] text-sm font-medium">2021</span>
+                <h4 className="text-lg font-clash font-bold mt-2">Class X — C.B.S.E.</h4>
+                <p className="text-white/50 text-sm mt-1">R.R. Morarka Public School, Nagina, U.P.</p>
+                <p className="text-white/60 text-sm mt-2">Percentage: 92.8%</p>
+              </motion.div>
             </div>
 
-            <div className="glass-card rounded-xl p-8 text-center flex flex-col items-center justify-center">
-              <FileText className="h-16 w-16 text-primary mb-4" />
-              <h4 className="text-xl font-display font-semibold mb-2">Download My Resume</h4>
-              <p className="text-muted-foreground mb-6">
-                Get a detailed overview of my skills and experience
-              </p>
-              <Button variant="hero" size="lg" asChild>
+            {/* Download Resume */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="mt-auto pt-12 border-t border-white/10"
+            >
+              <div className="flex items-center gap-4">
+                <div className="p-4 rounded-xl bg-[#d4af37]/10 border border-[#d4af37]/20">
+                  <FileText className="h-8 w-8 text-[#d4af37]" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-clash font-bold">My Resume</h4>
+                  <p className="text-white/50 text-sm">Download CV for detailed experience</p>
+                </div>
+              </div>
+              <Button asChild className="w-full mt-6 px-8 py-3 bg-[#d4af37] hover:bg-[#c49928] text-black font-medium rounded-full hover-trigger">
                 <a href="/assets/Anmol_Sharma_Resume.pdf" download>
                   <Download className="h-5 w-5 mr-2" />
                   Download CV
                 </a>
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
